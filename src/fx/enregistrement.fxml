@@ -9,49 +9,66 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #20120f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="350.0" layoutY="9.0" prefHeight="382.0" prefWidth="678.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="9.0">
+      <AnchorPane layoutX="9.0" layoutY="9.0" prefHeight="382.0" prefWidth="678.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="9.0">
          <children>
-            <Text layoutX="30.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENREGISTREMENT" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="282.9366149902344">
+            <Text layoutX="60.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENREGISTREMENT" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="385.3365783691406">
                <font>
-                  <Font size="25.0" />
+                  <Font size="35.0" />
                </font>
                <effect>
                   <Glow level="0.22" />
                </effect>
             </Text>
-            <TextField layoutX="60.0" layoutY="104.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="nom" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="105.0">
+            <TextField layoutX="60.0" layoutY="241.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="nom" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="241.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect>
-            </TextField>
-            <PasswordField layoutX="396.0" layoutY="78.0" prefHeight="26.0" prefWidth="219.0" promptText="mot de passe" AnchorPane.topAnchor="78.0">
-               <effect>
-                  <DropShadow height="10.0" radius="4.5" width="10.0" />
-               </effect>
-            </PasswordField>
-            <Text fill="#510606" layoutX="480.0" layoutY="357.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt;  CONNEXION COMPTE " textAlignment="RIGHT" textOrigin="CENTER" wrappingWidth="178.13663482666016">
                <font>
-                  <Font size="13.0" />
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <PasswordField layoutX="545.0" layoutY="214.0" prefHeight="26.0" prefWidth="219.0" promptText="mot de passe" AnchorPane.topAnchor="214.0">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Text fill="#510606" layoutX="586.0" layoutY="517.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="-&gt;  CONNEXION COMPTE " textAlignment="RIGHT" textOrigin="CENTER" wrappingWidth="302.93668365478516">
+               <font>
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Button layoutX="424.0" layoutY="254.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Enregistrement" />
-            <TextField layoutX="60.0" layoutY="151.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="prénom" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="155.0">
+            <Button layoutX="574.0" layoutY="385.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Enregistrement">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <TextField layoutX="60.0" layoutY="314.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="prénom" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="314.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <PasswordField layoutX="396.0" layoutY="125.0" prefHeight="26.0" prefWidth="219.0" promptText="confirmation mot de passe">
+            <PasswordField layoutX="545.0" layoutY="291.0" prefHeight="26.0" prefWidth="219.0" promptText="confirmation mot de passe">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </PasswordField>
-            <TextField layoutX="60.0" layoutY="191.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="pseudo" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="205.0">
+            <TextField layoutX="60.0" layoutY="385.0" prefHeight="26.0" prefWidth="219.0" promptText="pseudo" text="pseudo" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="385.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
          </children>
       </AnchorPane>
