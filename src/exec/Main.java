@@ -11,7 +11,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/fx/splashscreen.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/vue/splashscreen.fxml"));
 		primaryStage.setTitle("Bibliothèque manga <3");
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -20,7 +20,7 @@ public class Main extends Application{
 		primaryStage.centerOnScreen();
 		
 		Stage otherStage = new Stage();
-		Parent root1 = FXMLLoader.load(getClass().getResource("/fx/connectionace.fxml"));
+		Parent root1 = FXMLLoader.load(getClass().getResource("/vue/connectionace.fxml"));
 		otherStage.setTitle("Bibliothèque manga <3");
 		Scene scene1  = new Scene(root1);
 		otherStage.setScene(scene1);		
@@ -31,7 +31,7 @@ public class Main extends Application{
 		primaryStage.hide();
 		otherStage.show();
 		otherStage.centerOnScreen();
-	}
+		}
 	
 	public static void main(String[] args) {
 		launch(args);
