@@ -8,7 +8,6 @@ public class Connecter {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch(ClassNotFoundException e) {
 			System.err.println(e); 
-		//pour afficher erreur
 		}	
 		try {
 			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/collection", "root", "");
