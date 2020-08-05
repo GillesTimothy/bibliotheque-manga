@@ -1,10 +1,14 @@
 import java.sql.*;
 
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class gestionCollection extends javax.swing.JFrame {
 
@@ -31,7 +35,9 @@ public class gestionCollection extends javax.swing.JFrame {
         		model.addRow(new Object[] {Rs.getString("id"),Rs.getString("Titre"),Rs.getString("Auteur"),
         				Rs.getString("Status"),Rs.getString("NbrTome")});	
         	}
-        } catch(Exception e){System.err.println(e);}
+        } catch(Exception e){
+        	System.err.println(e);
+        	}
         tble.setModel(model);
     }    
 
@@ -57,6 +63,7 @@ public class gestionCollection extends javax.swing.JFrame {
     	}
     }
     
+    //affiche valeurs quand on clique dans le tableau.
     private void tbleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbleMouseClicked
     	try{
     		int i=tble.getSelectedRow();deplace(i);
@@ -64,11 +71,35 @@ public class gestionCollection extends javax.swing.JFrame {
     		JOptionPane.showMessageDialog(null,"erreur de deplacement "+e.getLocalizedMessage());}
     		}//GEN-LAST:event_tbleMouseClicked	
     
+    //bouton AJOUTER
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String id=txtid.getText();
+        String titre=txtno.getText();
+        String auteur=txtpr.getText();
+        String status=txtbr.getSelectedItem().toString();
+        String nbrTome=txtnot.getText();
+        String requete="insert into manga(id,Titre,Auteur,Status,NbrTome)VALUES('"+
+                id+"','"+titre+"','"+auteur+"','"+status+"','"+nbrTome+"')";
+        try{
+        	stm.executeUpdate(requete);
+        	JOptionPane.showMessageDialog(null,"Le manga a bien été ajouter à la collection");
+        	txtid.setText(id);
+        	txtno.setText("");
+        	txtpr.setText("");txtbr.setSelectedItem(0);txtnot.setText("");
+        }catch(Exception ex){
+        	JOptionPane.showMessageDialog(null,ex.getMessage());
+        	}
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -111,45 +142,50 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton1.setText("Supprimer");
 
         getContentPane().add(jButton1);
-        jButton1.setBounds(180, 400, 143, 40);
+        jButton1.setBounds(278, 203, 130, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/ajouter.png"))); // NOI18N
         jButton2.setText("Ajouter");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         getContentPane().add(jButton2);
-        jButton2.setBounds(40, 350, 130, 40);
+        jButton2.setBounds(278, 256, 130, 40);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); // NOI18N
         jButton3.setText("recherche ");
        
         getContentPane().add(jButton3);
-        jButton3.setBounds(380, 380, 150, 40);
+        jButton3.setBounds(420, 203, 140, 40);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/modifier.png"))); // NOI18N
         jButton4.setText("actualiser");
         
         getContentPane().add(jButton4);
-        jButton4.setBounds(180, 350, 140, 40);
+        jButton4.setBounds(420, 256, 140, 40);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         //jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/actualiser.png"))); // NOI18N
         jButton5.setText("modifier");
 
         getContentPane().add(jButton5);
-        jButton5.setBounds(40, 400, 130, 40);
+        jButton5.setBounds(572, 256, 130, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
     
         getContentPane().add(txtre);
-        txtre.setBounds(560, 380, 130, 30);
+        txtre.setBounds(572, 209, 130, 30);
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel6.setText("Mangath\u00E8que");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(260, 23, 350, 70);
+        jLabel6.setBounds(37, 13, 350, 70);
 
         tble.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,10 +198,17 @@ public class gestionCollection extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        
+        tble.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbleMouseClicked(evt);
+            }
+        });
+        
         jScrollPane1.setViewportView(tble);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(340, 140, 374, 90);
+        jScrollPane1.setBounds(37, 324, 639, 120);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("id :");
@@ -194,24 +237,24 @@ public class gestionCollection extends javax.swing.JFrame {
 
         txtnot.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtnot);
-        txtnot.setBounds(170, 290, 100, 23);
+        txtnot.setBounds(115, 290, 100, 23);
 
         txtbr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "enCours", "terminer" }));
         getContentPane().add(txtbr);
-        txtbr.setBounds(170, 240, 100, 22);
+        txtbr.setBounds(115, 237, 100, 22);
 
         txtpr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtpr);
-        txtpr.setBounds(170, 190, 100, 23);
+        txtpr.setBounds(115, 186, 100, 23);
 
         txtno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtno);
-        txtno.setBounds(170, 150, 100, 23);
+        txtno.setBounds(115, 146, 100, 23);
 
         txtid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         getContentPane().add(txtid);
-        txtid.setBounds(170, 110, 100, 23);
+        txtid.setBounds(115, 106, 100, 23);
 
         //jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/wallpaper7.jpg"))); // NOI18N
         getContentPane().add(jLabel7);
