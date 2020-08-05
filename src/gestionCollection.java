@@ -91,6 +91,21 @@ public class gestionCollection extends javax.swing.JFrame {
         	}
     }//GEN-LAST:event_jButton2ActionPerformed
     
+    //bouton ACTUALISER
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    	try {
+    		model.setRowCount(0);
+        	stm=conn.obtenirconnexion().createStatement();
+        	ResultSet Rs=stm.executeQuery("Select * from manga");
+        	while(Rs.next()) {
+        		model.addRow(new Object[] {Rs.getString("id"),Rs.getString("Titre"),Rs.getString("Auteur"),
+        				Rs.getString("Status"),Rs.getString("NbrTome")});	
+        	}
+        } catch(Exception e){
+        	System.err.println(e);
+        	}
+        tble.setModel(model);
+    }//GEN-LAST:event_jButton4ActionPerformed
     
     private void initComponents() {
 
@@ -166,6 +181,11 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/modifier.png"))); // NOI18N
         jButton4.setText("actualiser");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         
         getContentPane().add(jButton4);
         jButton4.setBounds(420, 256, 140, 40);
