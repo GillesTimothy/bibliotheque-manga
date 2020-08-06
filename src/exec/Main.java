@@ -20,7 +20,7 @@ public class Main extends Application{
 		primaryStage.centerOnScreen();
 		
 		Stage otherStage = new Stage();
-		Parent root1 = FXMLLoader.load(getClass().getResource("/vue/connectionace.fxml"));
+		Parent root1 = FXMLLoader.load(getClass().getResource("/vue/enregistrement.fxml"));
 		otherStage.setTitle("Bibliothèque manga <3");
 		Scene scene1  = new Scene(root1);
 		otherStage.setScene(scene1);		

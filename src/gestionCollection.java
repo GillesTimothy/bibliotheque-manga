@@ -61,6 +61,22 @@ public class gestionCollection extends javax.swing.JFrame {
     	}
     }
     
+    
+    private void affiche() {
+    	try {
+    		model.setRowCount(0);
+        	stm=conn.obtenirconnexion().createStatement();
+        	ResultSet Rs=stm.executeQuery("Select * from manga");
+        	while(Rs.next()) {
+        		model.addRow(new Object[] {Rs.getString("id"),Rs.getString("Titre"),Rs.getString("Auteur"),
+        				Rs.getString("Status"),Rs.getString("NbrTome")});	
+        	}
+        } catch(Exception e){
+        	System.err.println(e);
+        	}
+        tble.setModel(model);
+    }
+    
     //affiche valeurs quand on clique dans le tableau.
     private void tbleMouseClicked(java.awt.event.MouseEvent evt) {
     	try{
@@ -84,6 +100,7 @@ public class gestionCollection extends javax.swing.JFrame {
         	txtid.setText(id);
         	txtno.setText("");
         	txtpr.setText("");txtbr.setSelectedItem(0);txtnot.setText("");
+        	affiche();
         }catch(Exception ex){
         	JOptionPane.showMessageDialog(null,ex.getMessage());
         	}
@@ -91,18 +108,7 @@ public class gestionCollection extends javax.swing.JFrame {
     
     //bouton ACTUALISER
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-    	try {
-    		model.setRowCount(0);
-        	stm=conn.obtenirconnexion().createStatement();
-        	ResultSet Rs=stm.executeQuery("Select * from manga");
-        	while(Rs.next()) {
-        		model.addRow(new Object[] {Rs.getString("id"),Rs.getString("Titre"),Rs.getString("Auteur"),
-        				Rs.getString("Status"),Rs.getString("NbrTome")});	
-        	}
-        } catch(Exception e){
-        	System.err.println(e);
-        	}
-        tble.setModel(model);
+    	affiche();
     }
     
     //bouton MODIFIER
@@ -114,7 +120,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	                stm.executeUpdate("UPDATE manga SET Titre='"+txtpr.getText()+"',Auteur='"+txtpr.getText()+
     	                		"',NbrTome='"+txtnot.getText()+
     	                        "',Status='"+txtbr.getSelectedItem().toString()+
-    	                        "' WHERE id= "+txtid.getText());   	           
+    	                        "' WHERE id= "+txtid.getText());   
+    	                affiche();
     	            } 
     	        } catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de modification !!!"+e.getMessage());
     	        System.err.println(e);}
@@ -128,11 +135,38 @@ public class gestionCollection extends javax.swing.JFrame {
     	                     ,"supprimer manga",JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
     	            if(txtid.getText().length() != 0){
     	        stm.executeUpdate("Delete From manga where id = "+txtid.getText());
+    	        affiche();
     	             }
     	            else { JOptionPane.showMessageDialog(null,"veuillez SVP remplire le champ id !");}
     	        
     	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
     	    }
+    //bouton STATISTIQUE
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+    	statistique a=new statistique();
+    	a.setVisible(true);
+    	// TODO add your handling code here:
+    }
+    //bouton RECHERCHE
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+    	           model.setRowCount(0);// pour vider la list des mangas
+    	      {
+    	       Rs = stm.executeQuery("Select * From manga WHERE Titre = '"+txtre.getText()+"'");
+    	       }while (Rs.next()){
+    	       
+    	       Object [] manga ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
+    	     model.addRow(manga);
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a ce titre dans la collection !");
+    	       
+    	       } else{ int i=0;
+    	       deplace(i);
+    	       }
+    	       
+    	       }catch (Exception e) { System.err.println(e);
+    	       JOptionPane.showMessageDialog(null,e.getMessage());
+       }
+    }
     
     
     private void initComponents() {
@@ -146,6 +180,7 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         txtre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -207,6 +242,11 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
         jButton3.setText("recherche ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
        
         getContentPane().add(jButton3);
         jButton3.setBounds(420, 203, 140, 40);
@@ -234,6 +274,18 @@ public class gestionCollection extends javax.swing.JFrame {
 
         getContentPane().add(jButton5);
         jButton5.setBounds(572, 256, 130, 40);
+        
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        //jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/nouveau.png"))); // NOI18N
+        jButton6.setText("Statistique");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        
+        getContentPane().add(jButton6);
+        jButton6.setBounds(278, 150, 130, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
     
@@ -373,6 +425,7 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
