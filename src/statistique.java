@@ -15,25 +15,46 @@ public class statistique extends JFrame{
 	
 	Connecter conn=new Connecter();
 	Statement stm;
-	ResultSet Rs1;
-	ResultSet Rs2;
-	ResultSet Rs3;
+	ResultSet Rs;
 
-	
     public statistique() {
         initComponents();
         
         try {
         	stm=conn.obtenirconnexion().createStatement();
-        	ResultSet Rs1=stm.executeQuery("Select * from manga");
-        	while(Rs1.next()) {
-        			System.out.println(Rs1.getString("Titre"));
-        	}
+        	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"enCours\";");
+        	while(Rs.next()) {
+        		int value1 = Rs.getInt(1); 
+        		jLabel4.setText(String.valueOf(value1));
+        	}       	
         } catch(Exception e){
         	System.err.println(e);
-        	}
-        
-    }
+        	} 
+    
+	    try {
+	    	stm=conn.obtenirconnexion().createStatement();
+	    	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"terminer\";");
+	    	while(Rs.next()) {
+	    		int value2 = Rs.getInt(1); 
+        		jLabel5.setText(String.valueOf(value2));	    			
+	    	}  	
+	    } catch(Exception e){
+	    	System.err.println(e);
+	    	} 
+	    
+	    try {
+	    	stm=conn.obtenirconnexion().createStatement();
+	    	ResultSet Rs=stm.executeQuery("select sum(NbrTome) from manga;");
+	    	while(Rs.next()) {
+	    		int value3 = Rs.getInt(1); 
+        		jLabel6.setText(String.valueOf(value3));	    			
+	    	}  	
+	    } catch(Exception e){
+	    	System.err.println(e);
+	    	} 
+	    
+	    
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,13 +66,13 @@ public class statistique extends JFrame{
 
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel1.setText("nbr de tome en cours :");
+        jLabel1.setText("nbr de manga en cours :");
         jLabel2 = new javax.swing.JLabel();
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel2.setText("nbr de tome terminer :");
+        jLabel2.setText("nbr de manga terminer :");
         jLabel3 = new javax.swing.JLabel();
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel3.setText("nbr de manga :");
+        jLabel3.setText("nbr de tome :");
         
         jLabel4 = new javax.swing.JLabel();
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); 
@@ -70,38 +91,43 @@ public class statistique extends JFrame{
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-        				.addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-        				.addComponent(jLabel3, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        				.addComponent(jLabel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addComponent(jLabel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addComponent(jLabel6, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
-        			.addGap(20))
+        				.addComponent(jLabel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(jLabel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        						.addComponent(jLabel6, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
+        					.addGap(20))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(jLabel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        					.addContainerGap())))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addGap(20)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
         			.addGap(20)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
         				.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
-        					.addGap(20)
-        					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
         					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
+        					.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(20)
+        					.addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap(20, Short.MAX_VALUE))
         );
         getContentPane().setLayout(layout);
+        setLocation(350, 300);
         pack();
     }
     /**

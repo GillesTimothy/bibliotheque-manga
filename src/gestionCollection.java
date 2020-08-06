@@ -142,11 +142,12 @@ public class gestionCollection extends javax.swing.JFrame {
     	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
     	    }
     //bouton STATISTIQUE
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
     	statistique a=new statistique();
     	a.setVisible(true);
-    	// TODO add your handling code here:
     }
+    
+    
     //bouton RECHERCHE
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
@@ -171,7 +172,7 @@ public class gestionCollection extends javax.swing.JFrame {
     //bouton RECHERCHE 2
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
-    	           model.setRowCount(0);// pour vider la list des mangas
+    	           model.setRowCount(0);// pour vider la liste des mangas
     	      {
     	       Rs = stm.executeQuery("Select * From manga WHERE Status = '"+txtre2.getText()+"'");
     	       }while (Rs.next()){
@@ -236,6 +237,7 @@ public class gestionCollection extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(770, 530));
+        setLocation(300, 200);
         getContentPane().setLayout(null);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
