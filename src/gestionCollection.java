@@ -168,6 +168,27 @@ public class gestionCollection extends javax.swing.JFrame {
        }
     }
     
+    //bouton RECHERCHE 2
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+    	           model.setRowCount(0);// pour vider la list des mangas
+    	      {
+    	       Rs = stm.executeQuery("Select * From manga WHERE Status = '"+txtre2.getText()+"'");
+    	       }while (Rs.next()){
+    	       
+    	       Object [] manga2 ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
+    	     model.addRow(manga2);
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a ce status dans la collection !");
+    	       
+    	       } else{ int i=0;
+    	       deplace(i);
+    	       }
+    	       
+    	       }catch (Exception e) { System.err.println(e);
+    	       JOptionPane.showMessageDialog(null,e.getMessage());
+       }
+    }
+    
     
     private void initComponents() {
 
@@ -182,6 +203,8 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         txtre = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
+        txtre2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.addMouseListener(new MouseAdapter() {
@@ -241,7 +264,7 @@ public class gestionCollection extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
-        jButton3.setText("recherche ");
+        jButton3.setText("recherche - manga");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -286,11 +309,26 @@ public class gestionCollection extends javax.swing.JFrame {
         
         getContentPane().add(jButton6);
         jButton6.setBounds(278, 150, 130, 40);
+        
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
+        jButton7.setText("recherche - status");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+       
+        getContentPane().add(jButton7);
+        jButton7.setBounds(420, 150, 140, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
-    
         getContentPane().add(txtre);
         txtre.setBounds(572, 209, 130, 30);
+        
+        txtre2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        getContentPane().add(txtre2);
+        txtre2.setBounds(572, 156, 130, 30);
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); 
         jLabel6.setText("Mangath\u00E8que");
@@ -426,6 +464,7 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -450,5 +489,6 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JTextField txtnot;
     private javax.swing.JTextField txtpr;
     private javax.swing.JTextField txtre;
+    private javax.swing.JTextField txtre2;
 
 }
