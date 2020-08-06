@@ -114,12 +114,26 @@ public class gestionCollection extends javax.swing.JFrame {
     	                stm.executeUpdate("UPDATE manga SET Titre='"+txtpr.getText()+"',Auteur='"+txtpr.getText()+
     	                		"',NbrTome='"+txtnot.getText()+
     	                        "',Status='"+txtbr.getSelectedItem().toString()+
-    	                        "' WHERE id= "+txtid.getText());
-    	           
+    	                        "' WHERE id= "+txtid.getText());   	           
     	            } 
     	        } catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de modification !!!"+e.getMessage());
     	        System.err.println(e);}
     	    }
+    
+    
+    //bouton SUPPRIMER
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+    	            if(JOptionPane.showConfirmDialog(null,"voulez vous vraiment supprimer ce manga de votre collection ?"
+    	                     ,"supprimer manga",JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
+    	            if(txtid.getText().length() != 0){
+    	        stm.executeUpdate("Delete From manga where id = "+txtid.getText());
+    	             }
+    	            else { JOptionPane.showMessageDialog(null,"veuillez SVP remplire le champ id !");}
+    	        
+    	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
+    	    }
+    
     
     private void initComponents() {
 
@@ -169,6 +183,11 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/supprimer.png"))); 
         jButton1.setText("Supprimer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         getContentPane().add(jButton1);
         jButton1.setBounds(278, 203, 130, 40);
