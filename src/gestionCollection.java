@@ -3,8 +3,6 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
@@ -64,15 +62,15 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     //affiche valeurs quand on clique dans le tableau.
-    private void tbleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbleMouseClicked
+    private void tbleMouseClicked(java.awt.event.MouseEvent evt) {
     	try{
     		int i=tble.getSelectedRow();deplace(i);
     	}catch(Exception e){
     		JOptionPane.showMessageDialog(null,"erreur de deplacement "+e.getLocalizedMessage());}
-    		}//GEN-LAST:event_tbleMouseClicked	
+    		}
     
     //bouton AJOUTER
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         String id=txtid.getText();
         String titre=txtno.getText();
         String auteur=txtpr.getText();
@@ -89,10 +87,10 @@ public class gestionCollection extends javax.swing.JFrame {
         }catch(Exception ex){
         	JOptionPane.showMessageDialog(null,ex.getMessage());
         	}
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
     
     //bouton ACTUALISER
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     		model.setRowCount(0);
         	stm=conn.obtenirconnexion().createStatement();
@@ -105,7 +103,23 @@ public class gestionCollection extends javax.swing.JFrame {
         	System.err.println(e);
         	}
         tble.setModel(model);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }
+    
+    //bouton MODIFIER
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try { 
+    	            if (JOptionPane.showConfirmDialog (null,"confirmer la modification","modification",
+    	                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+
+    	                stm.executeUpdate("UPDATE manga SET Titre='"+txtpr.getText()+"',Auteur='"+txtpr.getText()+
+    	                		"',NbrTome='"+txtnot.getText()+
+    	                        "',Status='"+txtbr.getSelectedItem().toString()+
+    	                        "' WHERE id= "+txtid.getText());
+    	           
+    	            } 
+    	        } catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de modification !!!"+e.getMessage());
+    	        System.err.println(e);}
+    	    }
     
     private void initComponents() {
 
@@ -152,15 +166,15 @@ public class gestionCollection extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(770, 530));
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/supprimer.png"))); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/supprimer.png"))); 
         jButton1.setText("Supprimer");
 
         getContentPane().add(jButton1);
         jButton1.setBounds(278, 203, 130, 40);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/ajouter.png"))); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/ajouter.png"))); 
         jButton2.setText("Ajouter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,15 +185,15 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(278, 256, 130, 40);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
         jButton3.setText("recherche ");
        
         getContentPane().add(jButton3);
         jButton3.setBounds(420, 203, 140, 40);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/modifier.png"))); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/modifier.png"))); 
         jButton4.setText("actualiser");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,19 +204,24 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(420, 256, 140, 40);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/actualiser.png"))); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/actualiser.png"))); 
         jButton5.setText("modifier");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         getContentPane().add(jButton5);
         jButton5.setBounds(572, 256, 130, 40);
 
-        txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
     
         getContentPane().add(txtre);
         txtre.setBounds(572, 209, 130, 30);
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); 
         jLabel6.setText("Mangath\u00E8que");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(37, 13, 350, 70);
@@ -230,32 +249,32 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(37, 324, 639, 120);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
         jLabel2.setText("id :");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 110, 42, 17);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
         jLabel1.setText("Titre :");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(40, 150, 42, 17);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
         jLabel3.setText("Auteur :");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 190, 53, 17);
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
         jLabel4.setText("Status");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 240, 60, 17);
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); 
         jLabel5.setText("nbrTome  :");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(40, 294, 74, 17);
 
-        txtnot.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtnot.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtnot);
         txtnot.setBounds(115, 290, 100, 23);
 
@@ -263,15 +282,15 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(txtbr);
         txtbr.setBounds(115, 237, 100, 22);
 
-        txtpr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtpr.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtpr);
         txtpr.setBounds(115, 186, 100, 23);
 
-        txtno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtno.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtno);
         txtno.setBounds(115, 146, 100, 23);
 
-        txtid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtid.setFont(new java.awt.Font("Tahoma", 0, 14)); 
 
         getContentPane().add(txtid);
         txtid.setBounds(115, 106, 100, 23);
@@ -319,7 +338,7 @@ public class gestionCollection extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     public static void main(String args[]) {
     	java.awt.EventQueue.invokeLater(new Runnable() {
@@ -329,7 +348,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
     }
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
