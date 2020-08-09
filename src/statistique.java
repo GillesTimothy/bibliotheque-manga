@@ -84,6 +84,12 @@ public class statistique extends JFrame{
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); 
         jLabel6.setText("");
         
+        jLabel7 = new javax.swing.JLabel();
+        
+        
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/wallp2.jpg"))); 
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(0, -63, 964, 643);
         
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,6 +135,10 @@ public class statistique extends JFrame{
         getContentPane().setLayout(layout);
         setLocation(350, 300);
         pack();
+        
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/wallp2.jpg"))); 
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(0, -63, 964, 643);
     }
     /**
      * @param args the command line arguments
@@ -148,4 +158,6 @@ public class statistique extends JFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+
 }
