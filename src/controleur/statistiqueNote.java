@@ -12,6 +12,7 @@ public class statistiqueNote extends statistique {
 	ResultSet Rs;
 	
 	public statistiqueNote() {
+		super();
 		try {
         	stm=conn.obtenirconnexion().createStatement();
         	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"enCours\";");

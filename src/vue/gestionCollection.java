@@ -31,16 +31,6 @@ public class gestionCollection extends javax.swing.JFrame {
     String status;
     String nbrTome;
     
-    public gestionCollection(String id, String titre, String auteur, String status, String nbrTome)
-			throws HeadlessException {
-		super();
-		this.id = id;
-		this.titre = titre;
-		this.auteur = auteur;
-		this.status = status;
-		this.nbrTome = nbrTome;
-	}
-    
     public gestionCollection() {
     	  	
         initComponents();
@@ -71,7 +61,7 @@ public class gestionCollection extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
  
     
-    public void deplace(int i) {
+    private void deplace(int i) {
     	try {
     		txtid.setText(model.getValueAt (i, 0).toString());
     		txtno.setText(model.getValueAt (i, 1).toString());
@@ -86,7 +76,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     
-    public void affiche() {
+    private void affiche() {
     	try {
     		model.setRowCount(0);
         	stm=conn.obtenirconnexion().createStatement();
@@ -102,7 +92,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     //affiche valeurs quand on clique dans le tableau.
-    public void tbleMouseClicked(java.awt.event.MouseEvent evt) {
+    private void tbleMouseClicked(java.awt.event.MouseEvent evt) {
     	try{
     		int i=tble.getSelectedRow();
     		deplace(i);
@@ -111,7 +101,7 @@ public class gestionCollection extends javax.swing.JFrame {
     		}
     
     //bouton AJOUTER
-    public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         id=txtid.getText();
         titre=txtno.getText();
         auteur=txtpr.getText();
@@ -132,12 +122,12 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     //bouton ACTUALISER
-    public void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
     	affiche();
     }
     
     //bouton MODIFIER
-    public void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
     	try { 
     	            if (JOptionPane.showConfirmDialog (null,"confirmer la modification","modification",
     	                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
@@ -154,7 +144,7 @@ public class gestionCollection extends javax.swing.JFrame {
     
     
     //bouton SUPPRIMER
-    public void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	            if(JOptionPane.showConfirmDialog(null,"voulez vous vraiment supprimer ce manga de votre collection ?"
     	                     ,"supprimer manga",JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
@@ -167,12 +157,12 @@ public class gestionCollection extends javax.swing.JFrame {
     	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
     	    }
     //bouton STATISTIQUE
-    public void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
     	statistiqueNote a=new statistiqueNote();
     	a.setVisible(true);
     }
     //bouton RECHERCHE MANGA
-    public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
     	      {	
@@ -194,7 +184,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
   //bouton RECHERCHE AUTEUR
-    public void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
     	      {
@@ -217,7 +207,7 @@ public class gestionCollection extends javax.swing.JFrame {
     
     
     //bouton RECHERCHE 2
-    public void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la liste des mangas
     	      {
@@ -239,7 +229,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
           
     
-    public void initComponents() {
+    private void initComponents() {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton2.addActionListener(new ActionListener() {
@@ -500,68 +490,29 @@ public class gestionCollection extends javax.swing.JFrame {
     //}
     
     // Variables declaration
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
-    public javax.swing.JButton jButton4;
-    public javax.swing.JButton jButton5;
-    public javax.swing.JButton jButton6;
-    public javax.swing.JButton jButton7;
-    public javax.swing.JButton jButton9;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
-    public javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLabel7;
-    public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tble;
-    public javax.swing.JComboBox txtbr;
-    public javax.swing.JTextField txtid;
-    public javax.swing.JTextField txtno;
-    public javax.swing.JTextField txtnot;
-    public javax.swing.JTextField txtpr;
-    public javax.swing.JTextField txtre;
-    public javax.swing.JComboBox txtre2;
-    
-    
-    public String getTitre() {
-		return titre;
-	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
-	public String getAuteur() {
-		return auteur;
-	}
-
-	public void setAuteur(String auteur) {
-		this.auteur = auteur;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getNbrTome() {
-		return nbrTome;
-	}
-
-	public void setNbrTome(String nbrTome) {
-		this.nbrTome = nbrTome;
-	}
-	
-    @Override
-	public String toString() {
-		return "gestionCollection [id=" + id + ", titre=" + titre + ", auteur=" + auteur + ", status=" + status
-				+ ", nbrTome=" + nbrTome + "]";
-	}
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tble;
+    private javax.swing.JComboBox txtbr;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtno;
+    private javax.swing.JTextField txtnot;
+    private javax.swing.JTextField txtpr;
+    private javax.swing.JTextField txtre;
+    private javax.swing.JComboBox txtre2;
 
 }

@@ -11,13 +11,13 @@ public class statistique extends JFrame{
 	/**
      * @param args the command line arguments
      */	
-	public javax.swing.JLabel jLabel8;
-    public javax.swing.JLabel jLabel9;
-    public javax.swing.JLabel jLabel10;
-    public javax.swing.JLabel jLabel11;
-    public javax.swing.JLabel jLabel12;
-    public javax.swing.JLabel jLabel13;
-    public javax.swing.JLabel jLabel14;
+	private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
+    protected javax.swing.JLabel jLabel11;
+    protected javax.swing.JLabel jLabel12;
+    protected javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
 
     /**
      * Creates new form statistique
@@ -34,7 +34,7 @@ public class statistique extends JFrame{
      */
     
     @SuppressWarnings("unchecked")
-    public void initComponents() {
+    private void initComponents() {
 
         jLabel8 = new javax.swing.JLabel();
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); 
