@@ -1,5 +1,9 @@
+package controleur;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import modele.Connecter;
+import vue.statistique;
 
 public class statistiqueNote extends statistique {
 	
@@ -13,7 +17,7 @@ public class statistiqueNote extends statistique {
         	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"enCours\";");
         	while(Rs.next()) {
         		int value1 = Rs.getInt(1); 
-        		jLabel4.setText(String.valueOf(value1));
+        		jLabel11.setText(String.valueOf(value1));
         	}       	
         } catch(Exception e){
         	System.err.println(e);
@@ -24,7 +28,7 @@ public class statistiqueNote extends statistique {
 	    	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"terminer\";");
 	    	while(Rs.next()) {
 	    		int value2 = Rs.getInt(1); 
-        		jLabel5.setText(String.valueOf(value2));	    			
+        		jLabel12.setText(String.valueOf(value2));	    			
 	    	}  	
 	    } catch(Exception e){
 	    	System.err.println(e);
@@ -35,7 +39,7 @@ public class statistiqueNote extends statistique {
 	    	ResultSet Rs=stm.executeQuery("select sum(NbrTome) from manga;");
 	    	while(Rs.next()) {
 	    		int value3 = Rs.getInt(1); 
-        		jLabel6.setText(String.valueOf(value3));	    			
+        		jLabel13.setText(String.valueOf(value3));	    			
 	    	}  	
 	    } catch(Exception e){
 	    	System.err.println(e);

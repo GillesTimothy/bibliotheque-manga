@@ -1,7 +1,10 @@
+package controleur;
 import java.sql.*;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import modele.Connecter;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -86,7 +89,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     //affiche valeurs quand on clique dans le tableau.
-    private void tbleMouseClicked(java.awt.event.MouseEvent evt) {
+    public void tbleMouseClicked(java.awt.event.MouseEvent evt) {
     	try{
     		int i=tble.getSelectedRow();deplace(i);
     	}catch(Exception e){
@@ -94,7 +97,7 @@ public class gestionCollection extends javax.swing.JFrame {
     		}
     
     //bouton AJOUTER
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         id=txtid.getText();
         titre=txtno.getText();
         auteur=txtpr.getText();
@@ -115,12 +118,12 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     //bouton ACTUALISER
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
     	affiche();
     }
     
     //bouton MODIFIER
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
     	try { 
     	            if (JOptionPane.showConfirmDialog (null,"confirmer la modification","modification",
     	                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
@@ -137,7 +140,7 @@ public class gestionCollection extends javax.swing.JFrame {
     
     
     //bouton SUPPRIMER
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	            if(JOptionPane.showConfirmDialog(null,"voulez vous vraiment supprimer ce manga de votre collection ?"
     	                     ,"supprimer manga",JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
@@ -150,14 +153,14 @@ public class gestionCollection extends javax.swing.JFrame {
     	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
     	    }
     //bouton STATISTIQUE
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
+    public void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
     	statistiqueNote a=new statistiqueNote();
     	a.setVisible(true);
     }
     
     
     //bouton RECHERCHE MANGA
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
     	      {
@@ -179,7 +182,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
   //bouton RECHERCHE AUTEUR
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
     	      {
@@ -202,7 +205,7 @@ public class gestionCollection extends javax.swing.JFrame {
     
     
     //bouton RECHERCHE 2
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la liste des mangas
     	      {
@@ -229,7 +232,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
         
     
-    private void initComponents() {
+    public void initComponents() {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton2.addActionListener(new ActionListener() {
@@ -490,29 +493,29 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     // Variables declaration
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tble;
-    private javax.swing.JComboBox txtbr;
-    private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtno;
-    private javax.swing.JTextField txtnot;
-    private javax.swing.JTextField txtpr;
-    private javax.swing.JTextField txtre;
-    private javax.swing.JComboBox txtre2;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton5;
+    public javax.swing.JButton jButton6;
+    public javax.swing.JButton jButton7;
+    public javax.swing.JButton jButton9;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tble;
+    public javax.swing.JComboBox txtbr;
+    public javax.swing.JTextField txtid;
+    public javax.swing.JTextField txtno;
+    public javax.swing.JTextField txtnot;
+    public javax.swing.JTextField txtpr;
+    public javax.swing.JTextField txtre;
+    public javax.swing.JComboBox txtre2;
 
 }

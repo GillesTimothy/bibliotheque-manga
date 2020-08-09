@@ -1,3 +1,5 @@
+package modele;
+
 import java.sql.*;
 
 public class Connecter {
@@ -13,7 +15,7 @@ public class Connecter {
 			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/collection", "root", "");
 		} catch(SQLException e) {System.err.println(e);}
 	}
-	Connection obtenirconnexion() {
+	public Connection obtenirconnexion() {
 		return con;
 	}
 

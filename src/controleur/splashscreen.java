@@ -1,3 +1,5 @@
+package controleur;
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -60,7 +62,7 @@ public class splashscreen extends JFrame {
         });
 	}
 	
-	private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
+	public void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
     	gestionCollection C=new gestionCollection();
     	C.setVisible(true);
     }
