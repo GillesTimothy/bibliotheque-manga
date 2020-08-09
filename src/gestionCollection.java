@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Dimension;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 
 public class gestionCollection extends javax.swing.JFrame {
 
@@ -112,7 +110,7 @@ public class gestionCollection extends javax.swing.JFrame {
         	txtpr.setText("");txtbr.setSelectedItem(0);txtnot.setText("");
         	affiche();
         }catch(Exception ex){
-        	JOptionPane.showMessageDialog(null,ex.getMessage());
+        	JOptionPane.showMessageDialog(null,"l'id est déjà utilisé pour un autre manga de la collection !!!"); //+ex.getMessage()
         	}
     }
     
@@ -234,16 +232,6 @@ public class gestionCollection extends javax.swing.JFrame {
         txtno = new javax.swing.JTextField();
         txtid = new javax.swing.JTextField();
         
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -264,7 +252,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
 
         getContentPane().add(jButton1);
-        jButton1.setBounds(502, 299, 140, 40);
+        jButton1.setBounds(502, 299, 155, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); 
@@ -309,7 +297,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
         
         getContentPane().add(jButton4);
-        jButton4.setBounds(790, 299, 60, 40);
+        jButton4.setBounds(796, 299, 60, 40);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modifier.png"))); 
@@ -339,7 +327,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
         
         getContentPane().add(jButton6);
-        jButton6.setBounds(645, 299, 155, 40);
+        jButton6.setBounds(654, 299, 155, 40);
         
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
@@ -438,43 +426,7 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(txtid);
         txtid.setBounds(115, 134, 100, 23);
 
-        jMenu1.setText("File");
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("ajouter");
-
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem2.setText("modifier");
-
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
-        jMenuItem3.setText("supprimer");
-
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jMenuItem4.setText("actualiser");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setText("rechercher");
-
-        jMenu1.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem6.setText("realiser par");
-        jMenu2.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        
         
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/wallp2.jpg"))); 
         getContentPane().add(jLabel7);
@@ -507,15 +459,6 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tble;
     private javax.swing.JComboBox txtbr;
