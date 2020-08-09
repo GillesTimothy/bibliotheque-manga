@@ -181,7 +181,7 @@ public class gestionCollection extends javax.swing.JFrame {
     	try {
     	           model.setRowCount(0);// pour vider la liste des mangas
     	      {
-    	       Rs = stm.executeQuery("Select * From manga WHERE Status = '"+txtre2.getText()+"'");
+    	       Rs = stm.executeQuery("Select * From manga WHERE Status = '"+txtre2.getSelectedItem()+"'");
     	       }while (Rs.next()){
     	       
     	       Object [] manga2 ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
@@ -211,7 +211,7 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         txtre = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
-        txtre2 = new javax.swing.JTextField();
+        txtre2 = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.addMouseListener(new MouseAdapter() {
@@ -256,7 +256,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
 
         getContentPane().add(jButton1);
-        jButton1.setBounds(278, 203, 140, 40);
+        jButton1.setBounds(278, 203, 150, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); 
@@ -280,11 +280,11 @@ public class gestionCollection extends javax.swing.JFrame {
         });
        
         getContentPane().add(jButton3);
-        jButton3.setBounds(430, 203, 60, 40);
+        jButton3.setBounds(440, 203, 42, 40);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modifier.png"))); 
-        jButton4.setText("actualiser");
+        jButton4.setText("Actualiser");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -296,7 +296,7 @@ public class gestionCollection extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/actualiser.png"))); 
-        jButton5.setText("modifier");
+        jButton5.setText("Modifier");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -316,7 +316,7 @@ public class gestionCollection extends javax.swing.JFrame {
         });
         
         getContentPane().add(jButton6);
-        jButton6.setBounds(278, 150, 140, 40);
+        jButton6.setBounds(278, 150, 150, 40);
         
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
@@ -328,15 +328,15 @@ public class gestionCollection extends javax.swing.JFrame {
         });
        
         getContentPane().add(jButton7);
-        jButton7.setBounds(430, 150, 60, 40);
+        jButton7.setBounds(440, 150, 42, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtre);
-        txtre.setBounds(502, 209, 130, 30);
+        txtre.setBounds(494, 209, 130, 30);
         
-        txtre2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtre2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "enCours", "terminer" }));
         getContentPane().add(txtre2);
-        txtre2.setBounds(502, 156, 130, 30);
+        txtre2.setBounds(494, 156, 130, 30);
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); 
         jLabel6.setText("Mangath\u00E8que");
@@ -497,6 +497,6 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JTextField txtnot;
     private javax.swing.JTextField txtpr;
     private javax.swing.JTextField txtre;
-    private javax.swing.JTextField txtre2;
+    private javax.swing.JComboBox txtre2;
 
 }
