@@ -156,7 +156,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     
-    //bouton RECHERCHE
+    //bouton RECHERCHE MANGA
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
@@ -175,7 +175,31 @@ public class gestionCollection extends javax.swing.JFrame {
     	       }catch (Exception e) { System.err.println(e);
     	       JOptionPane.showMessageDialog(null,e.getMessage());
        }
+    	    
     }
+    
+  //bouton RECHERCHE AUTEUR
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
+    	try {
+    	           model.setRowCount(0);// pour vider la list des mangas
+    	      {
+    	       Rs = stm.executeQuery("Select * From manga WHERE Auteur = '"+txtre.getText()+"'");
+    	       }while (Rs.next()){
+    	       
+    	       Object [] manga ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
+    	     model.addRow(manga);
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a cet auteur dans la collection !");
+    	       
+    	       } else{ int i=0;
+    	       deplace(i);
+    	       }
+    	       
+    	       }catch (Exception e) { System.err.println(e);
+    	       JOptionPane.showMessageDialog(null,e.getMessage());
+       }
+    	    
+    }
+    
     
     //bouton RECHERCHE 2
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +210,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	       }while (Rs.next()){
     	       
     	       Object [] manga2 ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
-    	     model.addRow(manga2);
+    	       model.addRow(manga2);
+    	       
     	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a ce status dans la collection !");
     	       
     	       } else{ int i=0;
@@ -215,6 +240,7 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         txtre = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         txtre2 = new javax.swing.JComboBox();
@@ -276,7 +302,7 @@ public class gestionCollection extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
-        //jButton3.setText("recherche - manga");
+        jButton3.setText("manga");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setFocusPainted(false);
@@ -284,10 +310,23 @@ public class gestionCollection extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
-        });
-       
+        });      
         getContentPane().add(jButton3);
-        jButton3.setBounds(255, 246, 42, 40);
+        jButton3.setBounds(244, 215, 119, 40);
+        
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
+        jButton9.setText("auteur");
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setFocusPainted(false);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });       
+        getContentPane().add(jButton9);
+        jButton9.setBounds(244, 258, 119, 40);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/actualiser.png"))); 
@@ -347,15 +386,15 @@ public class gestionCollection extends javax.swing.JFrame {
         });
        
         getContentPane().add(jButton7);
-        jButton7.setBounds(255, 193, 42, 40);
+        jButton7.setBounds(255, 162, 42, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtre);
-        txtre.setBounds(309, 256, 130, 30);
+        txtre.setBounds(361, 242, 130, 30);
         
         txtre2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "enCours", "terminer" }));
         getContentPane().add(txtre2);
-        txtre2.setBounds(309, 203, 130, 30);
+        txtre2.setBounds(309, 172, 130, 30);
 
         jLabel6.setFont(new Font("Times New Roman", Font.BOLD, 55)); 
         jLabel6.setText("Biblioth\u00E8que Manga");
@@ -458,6 +497,7 @@ public class gestionCollection extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
