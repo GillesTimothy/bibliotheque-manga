@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class gestionCollection extends javax.swing.JFrame {
 
@@ -17,6 +18,12 @@ public class gestionCollection extends javax.swing.JFrame {
 	Statement stm;
 	ResultSet Rs;
 	DefaultTableModel model=new DefaultTableModel();
+	
+	String id;
+    String titre;
+    String auteur;
+    String status;
+    String nbrTome;
 	
     public gestionCollection() {
         initComponents();
@@ -47,7 +54,7 @@ public class gestionCollection extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
  
     
-    private void deplace(int i) {
+    public void deplace(int i) {
     	try {
     		txtid.setText(model.getValueAt (i, 0).toString());
     		txtno.setText(model.getValueAt (i, 1).toString());
@@ -62,7 +69,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }
     
     
-    private void affiche() {
+    public void affiche() {
     	try {
     		model.setRowCount(0);
         	stm=conn.obtenirconnexion().createStatement();
@@ -87,11 +94,11 @@ public class gestionCollection extends javax.swing.JFrame {
     
     //bouton AJOUTER
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        String id=txtid.getText();
-        String titre=txtno.getText();
-        String auteur=txtpr.getText();
-        String status=txtbr.getSelectedItem().toString();
-        String nbrTome=txtnot.getText();
+        id=txtid.getText();
+        titre=txtno.getText();
+        auteur=txtpr.getText();
+        status=txtbr.getSelectedItem().toString();
+        nbrTome=txtnot.getText();
         String requete="insert into manga(id,Titre,Auteur,Status,NbrTome)VALUES('"+
                 id+"','"+titre+"','"+auteur+"','"+status+"','"+nbrTome+"')";
         try{
@@ -192,7 +199,6 @@ public class gestionCollection extends javax.swing.JFrame {
     
     
     private void initComponents() {
-
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton2.addActionListener(new ActionListener() {
@@ -240,8 +246,8 @@ public class gestionCollection extends javax.swing.JFrame {
         setLocation(300, 200);
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/supprimer.png"))); 
+        jButton1.setFont(new Font("Tahoma", Font.BOLD, 14)); 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/supprimer.png"))); 
         jButton1.setText("Supprimer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,10 +256,10 @@ public class gestionCollection extends javax.swing.JFrame {
         });
 
         getContentPane().add(jButton1);
-        jButton1.setBounds(278, 203, 130, 40);
+        jButton1.setBounds(278, 203, 140, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/ajouter.png"))); 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); 
         jButton2.setText("Ajouter");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,8 +271,8 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton2.setBounds(278, 256, 130, 40);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
-        jButton3.setText("recherche - manga");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
+        //jButton3.setText("recherche - manga");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -274,10 +280,10 @@ public class gestionCollection extends javax.swing.JFrame {
         });
        
         getContentPane().add(jButton3);
-        jButton3.setBounds(420, 203, 140, 40);
+        jButton3.setBounds(430, 203, 60, 40);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/modifier.png"))); 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modifier.png"))); 
         jButton4.setText("actualiser");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,7 +295,7 @@ public class gestionCollection extends javax.swing.JFrame {
         jButton4.setBounds(420, 256, 140, 40);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/actualiser.png"))); 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/actualiser.png"))); 
         jButton5.setText("modifier");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,8 +306,8 @@ public class gestionCollection extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(572, 256, 130, 40);
         
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        //jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/nouveau.png"))); // NOI18N
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); 
+        //jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/statistique.png"))); 
         jButton6.setText("Statistique");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,11 +316,11 @@ public class gestionCollection extends javax.swing.JFrame {
         });
         
         getContentPane().add(jButton6);
-        jButton6.setBounds(278, 150, 130, 40);
+        jButton6.setBounds(278, 150, 140, 40);
         
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); 
-        //jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone/rechercher.png"))); 
-        jButton7.setText("recherche - status");
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rechercher.png"))); 
+        //jButton7.setText("recherche - status");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -322,15 +328,15 @@ public class gestionCollection extends javax.swing.JFrame {
         });
        
         getContentPane().add(jButton7);
-        jButton7.setBounds(420, 150, 140, 40);
+        jButton7.setBounds(430, 150, 60, 40);
 
         txtre.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         getContentPane().add(txtre);
-        txtre.setBounds(572, 209, 130, 30);
+        txtre.setBounds(502, 209, 130, 30);
         
         txtre2.setFont(new java.awt.Font("Tahoma", 0, 14));
         getContentPane().add(txtre2);
-        txtre2.setBounds(572, 156, 130, 30);
+        txtre2.setBounds(502, 156, 130, 30);
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); 
         jLabel6.setText("Mangath\u00E8que");
