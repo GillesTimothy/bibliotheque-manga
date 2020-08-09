@@ -25,7 +25,7 @@ public class gestionCollection extends javax.swing.JFrame {
     String auteur;
     String status;
     String nbrTome;
-	
+    
     public gestionCollection() {
         initComponents();
         
@@ -151,7 +151,7 @@ public class gestionCollection extends javax.swing.JFrame {
     	    }
     //bouton STATISTIQUE
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
-    	statistique a=new statistique();
+    	statistiqueNote a=new statistiqueNote();
     	a.setVisible(true);
     }
     
@@ -198,6 +198,11 @@ public class gestionCollection extends javax.swing.JFrame {
        }
     }
     
+    public static void openSplashScreen() {
+        splashscreen b=new splashscreen();
+    	b.setVisible(true);
+    }
+        
     
     private void initComponents() {
         jButton1 = new javax.swing.JButton();
@@ -353,9 +358,9 @@ public class gestionCollection extends javax.swing.JFrame {
         txtre2.setBounds(309, 203, 130, 30);
 
         jLabel6.setFont(new Font("Times New Roman", Font.BOLD, 55)); 
-        jLabel6.setText("Mangath\u00E8que");
+        jLabel6.setText("Biblioth\u00E8que Manga");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(37, 13, 431, 82);
+        jLabel6.setBounds(37, 13, 594, 82);
 
         tble.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -430,7 +435,7 @@ public class gestionCollection extends javax.swing.JFrame {
         
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/wallp2.jpg"))); 
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, -63, 964, 643);
+        jLabel7.setBounds(0, -63, 964, 646);
 
         pack();
         
@@ -439,7 +444,8 @@ public class gestionCollection extends javax.swing.JFrame {
     public static void main(String args[]) {
     	java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gestionCollection().setVisible(true);
+            	openSplashScreen();
+                //new gestionCollection().setVisible(true);
             }
         });
     }

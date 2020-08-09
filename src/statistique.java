@@ -1,9 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.GroupLayout.Alignment;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -12,48 +9,10 @@ public class statistique extends JFrame{
     /**
      * Creates new form statistique
      */
-	
-	Connecter conn=new Connecter();
-	Statement stm;
-	ResultSet Rs;
 
     public statistique() {
-        initComponents();
-        
-        try {
-        	stm=conn.obtenirconnexion().createStatement();
-        	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"enCours\";");
-        	while(Rs.next()) {
-        		int value1 = Rs.getInt(1); 
-        		jLabel4.setText(String.valueOf(value1));
-        	}       	
-        } catch(Exception e){
-        	System.err.println(e);
-        	} 
-    
-	    try {
-	    	stm=conn.obtenirconnexion().createStatement();
-	    	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"terminer\";");
-	    	while(Rs.next()) {
-	    		int value2 = Rs.getInt(1); 
-        		jLabel5.setText(String.valueOf(value2));	    			
-	    	}  	
-	    } catch(Exception e){
-	    	System.err.println(e);
-	    	} 
-	    
-	    try {
-	    	stm=conn.obtenirconnexion().createStatement();
-	    	ResultSet Rs=stm.executeQuery("select sum(NbrTome) from manga;");
-	    	while(Rs.next()) {
-	    		int value3 = Rs.getInt(1); 
-        		jLabel6.setText(String.valueOf(value3));	    			
-	    	}  	
-	    } catch(Exception e){
-	    	System.err.println(e);
-	    	} 
-	    
-	    
+        initComponents();     
+	      
 	}
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,7 +21,7 @@ public class statistique extends JFrame{
      */
     
     @SuppressWarnings("unchecked")
-    private void initComponents() {
+    public void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); 
@@ -143,21 +102,13 @@ public class statistique extends JFrame{
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        
-    	/* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new statistique().setVisible(true);
-            }
-        });
-    }
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
 
 }
