@@ -9,10 +9,9 @@ import javax.swing.JPanel;
 
 import vue.gestionCollection;
 
+@SuppressWarnings("serial")
 public class splashscreen extends JFrame {
 
-	private JPanel contentPane;
-	
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JLabel jLabel6;
 	/**
@@ -25,7 +24,7 @@ public class splashscreen extends JFrame {
         
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 970, 630);
-		contentPane = new JPanel();
+		new JPanel();
 		
 		setPreferredSize(new Dimension(970, 630));
         setLocation(300, 200);
