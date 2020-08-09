@@ -161,12 +161,11 @@ public class gestionCollection extends javax.swing.JFrame {
     	statistiqueNote a=new statistiqueNote();
     	a.setVisible(true);
     }
-    ArrayList<> manga = new ArrayList<>();
     //bouton RECHERCHE MANGA
     public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
     	           model.setRowCount(0);// pour vider la list des mangas
-    	      {
+    	      {	
     	       Rs = stm.executeQuery("Select * From manga WHERE Titre = '"+txtre.getText()+"'");
     	       }while (Rs.next()){
     	       
