@@ -1,6 +1,6 @@
 package exec;
 
-import controleur.splashscreen;
+import vue.splashscreen;
 
 public class Main {
 	

@@ -126,6 +126,7 @@ public class gestionCollection extends javax.swing.JFrame {
     		JOptionPane.showMessageDialog(null,"erreur de deplacement "+e.getLocalizedMessage());}
     		}
     
+    
     //bouton AJOUTER
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         id=txtid.getText();
@@ -147,10 +148,12 @@ public class gestionCollection extends javax.swing.JFrame {
         	}
     }
     
+    
     //bouton ACTUALISER
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
     	affiche();
     }
+    
     
     //bouton MODIFIER
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,11 +185,15 @@ public class gestionCollection extends javax.swing.JFrame {
     	        
     	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
     	    }
+    
+    
     //bouton STATISTIQUE
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {
     	statistiqueNote a=new statistiqueNote();
     	a.setVisible(true);
     }
+    
+    
     //bouton RECHERCHE MANGA
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
