@@ -13,6 +13,12 @@ public class statistiqueNote extends statistique {
 	
 	public statistiqueNote() {
 		super();
+		
+		jLabel8.setText("nbr de manga en cours :");
+		jLabel9.setText("nbr de manga terminer :");
+		jLabel10.setText("nbr de tome :");
+		
+		
 		try {
         	stm=conn.obtenirconnexion().createStatement();
         	ResultSet Rs=stm.executeQuery("select count(distinct Titre) from manga where Status like \"enCours\";");

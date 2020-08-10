@@ -1,19 +1,18 @@
 package vue;
 
-import javax.swing.JFrame;
 import javax.swing.GroupLayout.Alignment;
 
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class statistique extends JFrame{
+public class statistique extends javax.swing.JFrame{
 	
 	/**
      * @param args the command line arguments
      */	
-	private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel10;
+	protected javax.swing.JLabel jLabel8;
+    protected javax.swing.JLabel jLabel9;
+    protected javax.swing.JLabel jLabel10;
     protected javax.swing.JLabel jLabel11;
     protected javax.swing.JLabel jLabel12;
     protected javax.swing.JLabel jLabel13;
@@ -37,13 +36,13 @@ public class statistique extends JFrame{
 
         jLabel8 = new javax.swing.JLabel();
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel8.setText("nbr de manga en cours :");
+        //jLabel8.setText("nbr de manga en cours :");
         jLabel9 = new javax.swing.JLabel();
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel9.setText("nbr de manga terminer :");
+        //jLabel9.setText("nbr de manga terminer :");
         jLabel10 = new javax.swing.JLabel();
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); 
-        jLabel10.setText("nbr de tome :");
+        //jLabel10.setText("nbr de tome :");
         
         jLabel11 = new javax.swing.JLabel();
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); 

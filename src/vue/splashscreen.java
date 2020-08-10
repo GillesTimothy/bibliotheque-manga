@@ -4,11 +4,10 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class splashscreen extends JFrame {
+public class splashscreen extends javax.swing.JFrame {
 
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JLabel jLabel6;
