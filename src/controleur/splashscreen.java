@@ -9,12 +9,11 @@ import javax.swing.JPanel;
 
 import vue.gestionCollection;
 
+@SuppressWarnings("serial")
 public class splashscreen extends JFrame {
 
-	public JPanel contentPane;
-	
-	public javax.swing.JLabel jLabel7;
-	public javax.swing.JLabel jLabel6;
+	private javax.swing.JLabel jLabel7;
+	private javax.swing.JLabel jLabel6;
 	/**
 	 * Create the frame.
 	 */
@@ -25,7 +24,7 @@ public class splashscreen extends JFrame {
         
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 970, 630);
-		contentPane = new JPanel();
+		new JPanel();
 		
 		setPreferredSize(new Dimension(970, 630));
         setLocation(300, 200);
@@ -66,7 +65,7 @@ public class splashscreen extends JFrame {
 		});
 	}
 	
-	public void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
+	private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
     	gestionCollection C=new gestionCollection();
     	C.setVisible(true);
 	}	
