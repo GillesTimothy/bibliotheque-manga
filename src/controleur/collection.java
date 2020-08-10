@@ -14,6 +14,12 @@ public class collection {
     private static String status;
     private static int nbrTome;
     
+    private static int id2;
+    private static String titre2;
+    private static String auteur2;
+    private static String status2;
+    private static int nbrTome2;
+    
     public collection(){
 		
 		this.id = Integer.parseInt(JOptionPane.showInputDialog("Entrez l'id du manga"));
@@ -39,8 +45,14 @@ public class collection {
     
     
     public static void main(String[] args) {
-        
-    	id = Integer.parseInt(JOptionPane.showInputDialog("Entrez l'id du manga"));
+    	
+    	id2 = Integer.parseInt(JOptionPane.showInputDialog("Entrez l'id du manga"));
+		titre2 = JOptionPane.showInputDialog("Entrez le titre du manga");
+		auteur2 = JOptionPane.showInputDialog("Entrez l'auteur du manga");
+		status2 = JOptionPane.showInputDialog("Entrez le status du manga");
+		nbrTome2 = Integer.parseInt(JOptionPane.showInputDialog("Entrez le nombre de tome déjà lu du manga"));
+		
+		id = Integer.parseInt(JOptionPane.showInputDialog("Entrez l'id du manga"));
 		titre = JOptionPane.showInputDialog("Entrez le titre du manga");
 		auteur = JOptionPane.showInputDialog("Entrez l'auteur du manga");
 		status = JOptionPane.showInputDialog("Entrez le status du manga");
@@ -48,16 +60,27 @@ public class collection {
 		
 		
 		ArrayList<ArrayList<Object>> collec=new ArrayList<>();
+		
+		
+        ArrayList<Object> id2=new ArrayList<Object>();
+        id2.add(titre2);
+        id2.add(auteur2);
+        id2.add(status2);
+        id2.add(nbrTome2);
+        collec.add(0,id2);
+        
+    	
         ArrayList<Object> id=new ArrayList<Object>();
         id.add(titre);
         id.add(auteur);
         id.add(status);
         id.add(nbrTome);
         collec.add(0,id);
+        
      
         for(ArrayList p:collec) {
-            for(int i=0;i<collec.size();i++)
-		        System.out.println("["+collec.indexOf(p)+"] " + p.get(0) +" "+ p.get(1) + " " + p.get(2) + " " + p.get(3) ); 
+            
+		        System.out.println("["+collec.indexOf(p)+"] " + p.get(0) +" "+ p.get(1) + " " + p.get(2) + " " + p.get(3) );
 		}
     	
         
