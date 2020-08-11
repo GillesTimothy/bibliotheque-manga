@@ -7,7 +7,10 @@ import javax.swing.JOptionPane;
 public class collection {
 	
 	ArrayList<Object> collec = new ArrayList<Object>();
-
+	
+	/**
+	 * 
+	 */
 	private static int id;
     private static String titre;
     private static String auteur;

@@ -18,5 +18,4 @@ public class Connecter {
 	public Connection obtenirconnexion() {
 		return con;
 	}
-
 }

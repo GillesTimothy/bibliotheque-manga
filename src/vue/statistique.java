@@ -8,8 +8,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class statistique extends javax.swing.JFrame{
 	
 	/**
-     * @param args the command line arguments
-     */	
+	 * 
+	 */
 	protected javax.swing.JLabel jLabel8;
     protected javax.swing.JLabel jLabel9;
     protected javax.swing.JLabel jLabel10;

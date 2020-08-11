@@ -13,26 +13,50 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Dimension;
 
-@SuppressWarnings("serial")
-
+/**
+ * <b> gestionCollection est la classe qui permet de gérer la collection de manga sur l'application </b>
+ * <p>
+ * Un manga de la collection est caractérisé par les informations suivantes :
+ * <ul>
+ * <li>Un id unique</li>
+ * <li>Un titre unique</li>
+ * <li>Un auteur</li>
+ * <li>Un status, il peut être encours ou terminer</li>
+ * <li>Un nombre de tomes</li>
+ * </ul> 
+ * <p>
+ * Un manga peu être ajouter à la collection
+ * </p>
+ * <p>
+ * Un manga peu être supprimer de la collection
+ * </p>
+ * <p>
+ * Un manga peu être modifié dans la collection
+ * </p>
+ * 
+ * @see jButton1ActionPerformed(java.awt.event.ActionEvent evt)
+ * @see jButton2ActionPerformed(java.awt.event.ActionEvent evt)
+ * @see jButton5ActionPerformed(java.awt.event.ActionEvent evt)
+ * 
+ * @author gilles
+ *
+ */
 public class gestionCollection extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Gestion_de_la_collection
-     */
+	
 	Connecter conn=new Connecter();
 	Statement stm;
 	ResultSet Rs;
 	DefaultTableModel model=new DefaultTableModel();
 
-
+// Variables declaration
 	private String id;
     private String titre;
     private String auteur;
     private String status;
     private String nbrTome;
     
- // Variables declaration
+ // Variables interface declaration
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -141,10 +165,13 @@ public class gestionCollection extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null,"Le manga a bien été ajouter à la collection");
         	txtid.setText(id);
         	txtTitre.setText("");
-        	txtAuteur.setText("");txtStatus.setSelectedItem(0);txtNbrTome.setText("");
+        	txtAuteur.setText("");
+        	txtStatus.setSelectedItem(0);
+        	txtNbrTome.setText("");
         	affiche();
         }catch(Exception ex){
-        	JOptionPane.showMessageDialog(null,"l'id est déjà utilisé pour un autre manga de la collection !!!"); //+ex.getMessage()
+        	JOptionPane.showMessageDialog(null,"l'id ou le manga "
+        			+ "est déjà dans la collection !!!"); //+ex.getMessage()
         	}
     }
     
@@ -161,13 +188,15 @@ public class gestionCollection extends javax.swing.JFrame {
     	            if (JOptionPane.showConfirmDialog (null,"confirmer la modification","modification",
     	                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
 
-    	                stm.executeUpdate("UPDATE manga SET Titre='"+txtAuteur.getText()+"',Auteur='"+txtAuteur.getText()+
+    	                stm.executeUpdate("UPDATE manga SET Titre='"+txtAuteur.getText()+
+    	                		"',Auteur='"+txtAuteur.getText()+
     	                		"',NbrTome='"+txtNbrTome.getText()+
     	                        "',Status='"+txtStatus.getSelectedItem().toString()+
     	                        "' WHERE id= "+txtid.getText());   
     	                affiche();
     	            } 
-    	        } catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de modification !!!"+e.getMessage());
+    	        } catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de modification !!!"+
+    	            e.getMessage());
     	        System.err.println(e);}
     	    }
     
@@ -175,7 +204,8 @@ public class gestionCollection extends javax.swing.JFrame {
     //bouton SUPPRIMER
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     	try {
-    	            if(JOptionPane.showConfirmDialog(null,"voulez vous vraiment supprimer ce manga de votre collection ?"
+    	            if(JOptionPane.showConfirmDialog(null,"voulez vous vraiment supprimer "
+    	            		+ "ce manga de votre collection ?"
     	                     ,"supprimer manga",JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
     	            if(txtid.getText().length() != 0){
     	        stm.executeUpdate("Delete From manga where id = "+txtid.getText());
@@ -183,7 +213,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	             }
     	            else { JOptionPane.showMessageDialog(null,"veuillez SVP remplire le champ id !");}
     	        
-    	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur de suppression \n"+e.getMessage());} 
+    	        }catch (Exception e){JOptionPane.showMessageDialog(null,"erreur"
+    	        		+ " de suppression \n"+e.getMessage());} 
     	    }
     
     
@@ -204,7 +235,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	       
     	       Object [] manga ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
     	     model.addRow(manga);
-    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a ce titre dans la collection !");
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne"
+    	       		+ " correspond a ce titre dans la collection !");
     	       
     	       } else{ int i=0;
     	       deplace(i);
@@ -226,7 +258,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	       
     	       Object [] manga ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
     	     model.addRow(manga);
-    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a cet auteur dans la collection !");
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne"
+    	       		+ " correspond a cet auteur dans la collection !");
     	       
     	       } else{ int i=0;
     	       deplace(i);
@@ -250,7 +283,8 @@ public class gestionCollection extends javax.swing.JFrame {
     	       Object [] manga2 ={Rs.getInt(1),Rs.getString(2),Rs.getString(3),Rs.getInt(4),Rs.getString(5)};
     	       model.addRow(manga2);
     	       
-    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga ne correspond a ce status dans la collection !");
+    	       } if (model.getRowCount () == 0){JOptionPane.showMessageDialog(null,"Aucun manga "
+    	       		+ "ne correspond a ce status dans la collection !");
     	       
     	       } else{ int i=0;
     	       deplace(i);
@@ -261,8 +295,6 @@ public class gestionCollection extends javax.swing.JFrame {
        }
     }
           
-    
-    @SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initComponents() {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
