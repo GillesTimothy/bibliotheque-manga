@@ -1,0 +1,13 @@
+create database collection;
+
+use collection;
+
+Create Table utilisateur (id INT, Nom VARCHAR(50), Prenom VARCHAR(50), Pseud VARCHAR(50), Mdp varchar(20));
+
+Create Table manga (id INT, Titre VARCHAR(50), Auteur VARCHAR(50), NbrTome INT, Status VARCHAR(20));
+
+show tables;
+
+describe utilisateur;
+
+describe manga;
