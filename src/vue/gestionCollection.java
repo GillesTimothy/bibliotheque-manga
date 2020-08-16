@@ -128,7 +128,7 @@ public class gestionCollection extends javax.swing.JFrame {
     }    
     
     /**
-     * Deplace les valeurs presente dans le model vers les différents champs de texte 
+     * Déplace les valeurs présentent dans le model vers les différents champs de texte 
      * (txtid, txtTitre, txtAuteur, txtStatus, txtNbrTome)
      * @param i position sur la tableModel
      */
@@ -184,6 +184,7 @@ public class gestionCollection extends javax.swing.JFrame {
      * Recupère les valeurs des champs txtid txtTitre txtAuteur txtStatus txtNbrTome
      * pour les ajouter a la base de données
      * @param evt clique sur le bouton ajouter
+     * @exception les valeur des champs txtid ou txtTtre sont déjà présente dans la base de données.
      * @see affiche()
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {

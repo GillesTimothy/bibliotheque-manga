@@ -4,7 +4,7 @@ use collection;
 
 Create Table utilisateur (id INT auto_increment, Nom VARCHAR(50) unique, Prenom VARCHAR(50), Pseud VARCHAR(50), Mdp varchar(20), primary key (id));
 
-Create Table manga (id INT, Titre VARCHAR(50), Auteur VARCHAR(50), NbrTome INT, Status VARCHAR(20));
+Create Table manga (id INT auto_increment, Titre VARCHAR(50) unique, Auteur VARCHAR(50), NbrTome INT, Status VARCHAR(20), primary key (id));
 
 show tables;
 
